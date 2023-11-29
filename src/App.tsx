@@ -1,34 +1,25 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { ImageSlider } from "./ImageSlider";
+import banner1 from "./asset/banner-1.jpeg";
+import banner2 from "./asset/banner-2.jpeg";
+import banner3 from "./asset/banner-3.jpeg";
+import banner4 from "./asset/banner-4.jpeg";
+
+const images = [banner1, banner2, banner3, banner4];
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div
+      style={{
+        maxWidth: "1200px",
+        width: "100%",
+        // Instead of manually hard coding the height -> you can use aspect ratio
+        // height: "500px", -> aspectRatio: ""
+        aspectRatio: "10/4",
+        margin: "0 auto",
+      }}
+    >
+      <ImageSlider imageUrls={images} />
+    </div>
   );
 }
 
