@@ -24,22 +24,29 @@ export function ImageSlider({ imageUrls }: ImageSliderProps) {
   }
 
   return (
-    <div className="img-slider-container">
-      <img src={imageUrls[imageIndex]} className="img-slider-img" />
-      <button
-        onClick={showPrevImage}
-        className="img-slider-button"
-        style={{ left: 0 }}
-      >
-        <ArrowBigLeft />
-      </button>
-      <button
-        onClick={showNextImage}
-        className="img-slider-button"
-        style={{ right: 0 }}
-      >
-        <ArrowBigRight />
-      </button>
-    </div>
+    <>
+      <div className="img-slider-container">
+        <img src={imageUrls[imageIndex]} className="img-slider-img" />
+        <button
+          onClick={showPrevImage}
+          className="img-slider-button"
+          style={{ left: 0 }}
+        >
+          <ArrowBigLeft />
+        </button>
+        <button
+          onClick={showNextImage}
+          className="img-slider-button"
+          style={{ right: 0 }}
+        >
+          <ArrowBigRight />
+        </button>
+      </div>
+      <div style={{ width: "100%", height: "100%", display: "flex" }}>
+        {imageUrls.map((url, index) => (
+          <img key={index} src={url} className="img-slider-img" />
+        ))}
+      </div>
+    </>
   );
 }
