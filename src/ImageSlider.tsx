@@ -8,29 +8,32 @@ import {
 import "./imageSlider.css";
 
 type ImageSliderProps = {
-  imageUrls: string[];
+  image: {
+    url: string;
+    alt: string;
+  }[];
 };
 
-export function ImageSlider({ imageUrls }: ImageSliderProps) {
+export function ImageSlider({ image }: ImageSliderProps) {
   const [imageIndex, setImageIndex] = useState(0);
 
   function showPrevImage() {
     setImageIndex((index) => {
-      if (index === 0) return imageUrls.length - 1;
+      if (index === 0) return image.length - 1;
       return index - 1;
     });
   }
 
   function showNextImage() {
     setImageIndex((index) => {
-      if (index === imageUrls.length - 1) return 0;
+      if (index === image.length - 1) return 0;
       return index + 1;
     });
   }
 
   return (
     <>
-      <div className="img-slider-container">
+      <section arial-label="Image Slider" className="img-slider-container">
         <div
           style={{
             width: "100%",
@@ -39,10 +42,12 @@ export function ImageSlider({ imageUrls }: ImageSliderProps) {
             overflow: "hidden",
           }}
         >
-          {imageUrls.map((url, index) => (
+          {image.map(({ url, alt }, index) => (
             <img
-              key={index}
+              key={url}
               src={url}
+              alt={alt}
+              arial-hidden={imageIndex !== index}
               className="img-slider-img"
               style={{ translate: `${-100 * imageIndex}%` }}
             />
@@ -52,15 +57,17 @@ export function ImageSlider({ imageUrls }: ImageSliderProps) {
           onClick={showPrevImage}
           className="img-slider-button"
           style={{ left: 0 }}
+          aria-label="View Previous Image"
         >
-          <ArrowBigLeft />
+          <ArrowBigLeft arial-hidden />
         </button>
         <button
           onClick={showNextImage}
           className="img-slider-button"
           style={{ right: 0 }}
+          aria-label="View Next Image"
         >
-          <ArrowBigRight />
+          <ArrowBigRight arial-hidden />
         </button>
         <div
           style={{
@@ -72,17 +79,22 @@ export function ImageSlider({ imageUrls }: ImageSliderProps) {
             gap: "0.25rem",
           }}
         >
-          {imageUrls.map((_, index) => (
+          {image.map((_, index) => (
             <button
               key={index}
               className="img-slider-dot-btn"
+              aria-label={`View Image ${index + 1}`}
               onClick={() => setImageIndex(index)}
             >
-              {index === imageIndex ? <CircleDot /> : <CircleDotDashed />}
+              {index === imageIndex ? (
+                <CircleDot arial-hidden />
+              ) : (
+                <CircleDotDashed arial-hidden />
+              )}
             </button>
           ))}
         </div>
-      </div>
+      </section>
     </>
   );
 }
