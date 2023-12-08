@@ -4,7 +4,12 @@ import banner2 from "./asset/banner-2.jpeg";
 import banner3 from "./asset/banner-3.jpeg";
 import banner4 from "./asset/banner-4.jpeg";
 
-const images = [banner1, banner2, banner3, banner4];
+const images = [
+  { url: banner1, alt: "banner 1" },
+  { url: banner2, alt: "banner 2" },
+  { url: banner3, alt: "banner 3" },
+  { url: banner4, alt: "banner 4" },
+];
 
 function App() {
   return (
@@ -18,7 +23,7 @@ function App() {
         margin: "0 auto",
       }}
     >
-      <ImageSlider imageUrls={images} />
+      <ImageSlider image={images} />
     </div>
   );
 }
