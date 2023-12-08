@@ -34,6 +34,9 @@ export function ImageSlider({ image }: ImageSliderProps) {
   return (
     <>
       <section arial-label="Image Slider" className="img-slider-container">
+        <a href="#skip-image-slider" className="skip-link">
+          Skip Image Slider
+        </a>
         <div
           style={{
             width: "100%",
@@ -94,6 +97,7 @@ export function ImageSlider({ image }: ImageSliderProps) {
             </button>
           ))}
         </div>
+        <div id="skip-image-slider" />
       </section>
     </>
   );

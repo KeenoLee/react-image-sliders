@@ -24,6 +24,9 @@ function App() {
       }}
     >
       <ImageSlider image={images} />
+      <a href="/" style={{ fontSize: "4rem" }}>
+        Link
+      </a>
     </div>
   );
 }
