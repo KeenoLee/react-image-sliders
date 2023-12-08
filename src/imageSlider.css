@@ -17,7 +17,6 @@
   display: block;
   flex-shrink: 0;
   flex-grow: 0;
-  transition: translate 300ms ease-in-out;
 }
 
 .img-slider-button {
@@ -43,11 +42,6 @@
 /*Arrow Left Right Button Hover Animation
   -> it makes feel more professional and enjoyable
 */
-
-.img-slider-button:hover > *,
-.img-slider-button:focus-visible > * {
-  animation: squish 200ms ease-in-out;
-}
 
 .img-slider-button > * {
   stroke: white;
@@ -111,5 +105,15 @@
 @keyframes squish {
   50% {
     scale: 1.4 0.6;
+  }
+}
+
+@media not (prefers-reduced-motion) {
+  .img-slider-img {
+    transition: translate 300ms ease-in-out;
+  }
+  .img-slider-button:hover > *,
+  .img-slider-button:focus-visible > * {
+    animation: squish 200ms ease-in-out;
   }
 }
