@@ -77,6 +77,11 @@
   scale: 1.2;
 }
 
+.img-slider-dot-btn:focus-visible,
+.img-slider-btn:focus-visible {
+  outline: auto;
+}
+
 @keyframes squish {
   50% {
     scale: 1.4 0.6;
