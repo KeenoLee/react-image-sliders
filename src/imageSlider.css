@@ -32,7 +32,11 @@
   transition: background-color 100ms ease-in-out;
 }
 
-.img-slider-button:hover {
+/* One Big Problem : to be clicking the Tab Key to tab through we don't know which image we are currently watching
+   -> More Accessible Version: add focus-visible with focus and hover and the same time 
+*/
+.img-slider-button:hover,
+.img-slider-button:focus-visible {
   background-color: rgb(0, 0, 0, 0.2);
 }
 
@@ -40,7 +44,8 @@
   -> it makes feel more professional and enjoyable
 */
 
-.img-slider-button:hover > * {
+.img-slider-button:hover > *,
+.img-slider-button:focus-visible > * {
   animation: squish 200ms ease-in-out;
 }
 
@@ -67,7 +72,8 @@
   width: 100%;
 }
 
-.img-slider-dot-btn:hover > * {
+.img-slider-dot-btn:hover,
+.img-slider-button:focus-visible > * {
   scale: 1.2;
 }
 
